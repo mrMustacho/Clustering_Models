@@ -1,0 +1,20 @@
+---
+title: "README"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+The are some clustering techniques used in data mining.
+
+## Table of contents
+
+* [GMM: Gaussian Mixuture Model](GMM.nb.html)
+* KNN (to be done)
+* K-Means (to be done) 
+* Fuzzy C-Means (to be done)
+* DBSCAN (to be done)
