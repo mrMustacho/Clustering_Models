@@ -5,6 +5,10 @@ output:
     df_print: paged
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
 ```
  ██████╗ ███╗   ███╗███╗   ███╗
 ██╔════╝ ████╗ ████║████╗ ████║
@@ -122,7 +126,7 @@ Mclust function also returns whish form of the clsuter better fit the gaussian d
 
 Here is an image for reference
 
-![density_form](./density_form.png)
+![](./resources/density_form.png)
 
 ```{r}
 plot(model$BIC)
@@ -154,5 +158,3 @@ Option 4 gives the density form ?? of each clsuter
 ```{r}
 
 ```
-
-
