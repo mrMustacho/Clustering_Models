@@ -1,0 +1,24 @@
+---
+title: "R Notebook"
+knit: (function(input_file, encoding) {
+  out_dir <- '../docs';
+  rmarkdown::render(input_file,
+ encoding=encoding,
+ output_file=file.path(dirname(input_file), out_dir, 'index.html'))})
+output:
+  html_document:
+    df_print: paged
+---
+
+## Introduction
+
+The are some clustering techniques used in data mining.
+Most will use the iris data set.
+
+## Table of contents
+
+* [GMM: Gaussian Mixuture Model](./GMM.html) *to be done*
+* [K-means](./K-means.html) *to be done*
+* KNN: K-Nearest Neighbor *coming soon*
+* Fuzzy C-Means *coming soon*
+* DBSCAN *coming soon*
