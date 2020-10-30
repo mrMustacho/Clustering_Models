@@ -9,8 +9,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Introduction
 
-The are some clustering techniques used in data mining.
-Most will use the iris data set.
+These are some clustering techniques used in data mining. These techniques are reviewed using r,a language and environment for statistical computing and graphics, more about [here](https://www.r-project.org/about.html).
 
 ## Table of contents
 
