@@ -1,0 +1,50 @@
+---
+title: "K-means"
+output: html_notebook
+---
+
+```
+██╗  ██╗     ███╗   ███╗███████╗ █████╗ ███╗   ██╗███████╗
+██║ ██╔╝     ████╗ ████║██╔════╝██╔══██╗████╗  ██║██╔════╝
+█████╔╝█████╗██╔████╔██║█████╗  ███████║██╔██╗ ██║███████╗
+██╔═██╗╚════╝██║╚██╔╝██║██╔══╝  ██╔══██║██║╚██╗██║╚════██║
+██║  ██╗     ██║ ╚═╝ ██║███████╗██║  ██║██║ ╚████║███████║
+╚═╝  ╚═╝     ╚═╝     ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝
+                                                          
+```
+
+ 
+
+## Model Description
+
+An algorithm to cluster objects based on attributes into k partitions.
+It assigns each object to the cluster whose center is nearest. 
+It follows several iterations of assignments
+until convergence.
+
+## Required Packages
+
+```{r, echo=FALSE}
+
+```
+
+## Dataset Preparation
+
+```{r}
+data <- iris
+summary(data)
+
+```
+
+## K-means Aplication
+
+```{r}
+
+```
+
+## References
+
+[https://en.wikipedia.org/wiki/K-means_clustering]()
+[https://en.wikipedia.org/wiki/Principal_component_analysis]()
+[https://www.datacamp.com/community/tutorials/pca-analysis-r]()
+
