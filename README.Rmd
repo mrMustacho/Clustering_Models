@@ -17,7 +17,7 @@ In the following docs we will observe different techniques used in Data Mining. 
   * *coming soon*
 
 - **Clustering**:
-  * [GMM: Gaussian Mixture Model](./docs/html) *to be done*
+  * [GMM: Gaussian Mixture Model](./docs.html) *to be done*
   * K-means *to be done*
   * KNN: K-Nearest Neighbor *coming soon*
   * Fuzzy C-Means *coming soon*
