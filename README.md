@@ -13,7 +13,7 @@ environment for statistical computing and graphics, more about
   - **Outliers Detection**:
       - *coming soon*
   - **Clustering**:
-      - [GMM: Gaussian Mixture Model](./docs/html) *to be done*
+      - [GMM: Gaussian Mixture Model](./docs/gmm.html) *to be done*
       - K-means *to be done*
       - KNN: K-Nearest Neighbor *coming soon*
       - Fuzzy C-Means *coming soon*
