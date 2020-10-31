@@ -22,6 +22,11 @@ knitr::opts_chunk$set(echo = TRUE)
 ╚██████╔╝██║ ╚═╝ ██║██║ ╚═╝ ██║
  ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚═╝
 ```
+
+# Status
+
+NOT DONE SO PLEASE PROCEED WITH CAUTION
+
 ## Table of Contents
 
 * Model Description
@@ -50,6 +55,10 @@ The problem is that we know neither of these things: not the distribution that e
 
 ```{r}
 library(mclust)
+library(factoextra)
+library(cluster)
+library(plotly)
+library(dplyr)
 ```
 
 ## Dataset Preparation
@@ -76,7 +85,6 @@ test_clusters <- 1:10
 # Training the model
 model <- Mclust(scaled_data, G=test_clusters)
 ```
-
 
 
 ## BIC and AIC metrics
@@ -133,14 +141,6 @@ Here is an image for reference
 
 ![](./resources/density_form.png)
 
-```{r}
-plot(model$BIC)
-```
-
-
-
-
-plot(model$BIC)
 
 When comparing models fitted by maximum likelihood to the same data, the smaller the AIC or BIC, the better the fit.
 
@@ -149,17 +149,62 @@ the groups shown in the iris data set
 
 ```{r}
 opt_model <- Mclust(scaled_data, G=2)
+opt_model$density <- densityMclust(scaled_data, G=2)$density
 plot(opt_model)
 ```
 
 Option 2 gives the actual cluster formed
 
-Options 3 gives rows that the algorithm couldn't associate with either cluster
+Option 3 gives rows that the algorithm couldn't associate with either cluster
 
-Option 4 gives the density form ?? of each clsuter
+Option 4 gives the density of each clsuter
+
+### 3d Visualization of the clusters
+
+We already seen how the groups would look in a 2d plane, but not always the data set will behave as this one, it can happen sometimes that the clusters intersect each others and makes it difficult to differentiate both. One way to distinguish better each cluster is plotting the in a 3d space, being the height Value the density of each coordinate in the data. Next we will use the plotly library, which I like personally for its flexibility and features.
+
+```{r}
+plot_ly(x=scaled_data[,2], 
+        y=scaled_data[,3], 
+        z=opt_model$density, 
+        color = opt_model$classification, 
+        colors = c("#FF0000", "#0000FF"),
+        mode = "markers", 
+        type = "scatter3d", 
+        opacity= 0.5) %>% hide_colorbar()
+
+```
 
 ## Evaluation
 
-```{r}
+We saw that by using the AIC and BIC metrics we could decided which would have been the best number of cluster to better fit our data. Sadly we are not done yet, we did find the the best number of cluster but we don't know yet if those groups really represent the behavior of the data
 
+```{r}
+#Searching for K based on silhouette
+coefSil=c()
+for (k in test_clusters[-1]){
+  model = Mclust(iris[1:4], G=k)
+  temp = silhouette(model$classification,dist(iris[,1:4]))
+  coefSil[k]=mean(temp[,3])
+}
+
+tempDF=data.frame(CS=coefSil,K=test_clusters)
+
+ggplot(tempDF)+
+  aes(x=K,y=CS)+
+  geom_line()+
+  scale_x_continuous(breaks=test_clusters)+
+  xlab("N. of Clusters")+
+  ylab("Silhouette Coefficient")+
+  ggtitle("Silhouette Coefficient vs N. of Clusters")
+```
+
+
+```{r}
+#Silohouette coefficient
+model = Mclust(iris[1:4], G=2)
+cluster=model$classification
+coefSil=silhouette(cluster,dist(iris[,1:4]))
+summary(coefSil)
+fviz_silhouette(coefSil,label=F)
 ```
