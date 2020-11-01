@@ -1,5 +1,5 @@
 ---
-title: "R Notebook"
+title: "Data Mining: techniques and algorithms"
 knit: (function(input_file, encoding) {
   out_dir <- '../docs';
   rmarkdown::render(input_file,
